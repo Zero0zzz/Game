@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include<iostream>
 #include <windows.h>
 #include"Draw.h"
@@ -8,7 +9,7 @@ SETCONSOLEFONT SetConsoleFont;
 using namespace std;
 int main()
 {
-	system("mode con cols=75 lines=25");
+
 	CONSOLE_FONT_INFO CFI;
 	CONSOLE_FONT_INFO* pCFI = &CFI;
 
@@ -37,12 +38,19 @@ int main()
 	INPUT_RECORD all_events;
 	DWORD a;
 
+	CONSOLE_FONT_INFOEX cfi;
+	cfi.cbSize = sizeof cfi;
+	cfi.nFont = 0;
+	cfi.dwFontSize.X = 0;
+	cfi.dwFontSize.Y = 20;
+	cfi.FontFamily = FF_DONTCARE;
+	cfi.FontWeight = FW_NORMAL;
+	//wcscpy(cfi.FaceName, L"Lucida Console");
+	wcscpy(cfi.FaceName, L"Lucida Console");
+	SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi);
+
 	Draw dr;
 	dr.Create_file();
-
-
-	//123
-
 
 	system("pause >> null");
 }
@@ -54,19 +62,19 @@ SETCONSOLEFONT SetConsoleFont;
 
 int main() {
 
-	//Определимся со структурой CONSOLE_FONT_INFO
-	CONSOLE_FONT_INFO CFI;
-	CONSOLE_FONT_INFO* pCFI = &CFI;
+ //Определимся со структурой CONSOLE_FONT_INFO
+ CONSOLE_FONT_INFO CFI;
+ CONSOLE_FONT_INFO* pCFI = &CFI;
 
-	//Информация о шрифте- так, чтобы знать!
-	GetCurrentConsoleFont(GetStdHandle(STD_OUTPUT_HANDLE), false, pCFI);
+ //Информация о шрифте- так, чтобы знать!
+ GetCurrentConsoleFont(GetStdHandle(STD_OUTPUT_HANDLE), false, pCFI);
 
-	HMODULE hmod = GetModuleHandleA("KERNEL32.DLL");
-	SetConsoleFont = (SETCONSOLEFONT)GetProcAddress(hmod, "SetConsoleFont");
+ HMODULE hmod = GetModuleHandleA("KERNEL32.DLL");
+ SetConsoleFont = (SETCONSOLEFONT)GetProcAddress(hmod, "SetConsoleFont");
 
-	for (int i = 0; i < 16; i++) {
-		SetConsoleFont(GetStdHandle(STD_OUTPUT_HANDLE), i);
-		GetCurrentConsoleFont(GetStdHandle(STD_OUTPUT_HANDLE), false, pCFI);
-	}
+ for (int i = 0; i < 16; i++) {
+  SetConsoleFont(GetStdHandle(STD_OUTPUT_HANDLE), i);
+  GetCurrentConsoleFont(GetStdHandle(STD_OUTPUT_HANDLE), false, pCFI);
+ }
 
 }*/
