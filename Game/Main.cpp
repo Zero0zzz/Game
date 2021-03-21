@@ -9,7 +9,7 @@ SETCONSOLEFONT SetConsoleFont;
 using namespace std;
 int main()
 {
-
+	/////////
 	CONSOLE_FONT_INFO CFI;
 	CONSOLE_FONT_INFO* pCFI = &CFI;
 
