@@ -17,5 +17,6 @@ public:
 	void ReadFile();
 	void Show();
 	bool Check(short, short);
+
 };
 

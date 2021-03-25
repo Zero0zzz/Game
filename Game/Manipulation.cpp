@@ -10,7 +10,7 @@ Manipulation::Manipulation()
 
 void Manipulation::Coord()
 {
-	if (_kbhit()) {//управление
+	if (_kbhit()) {  // управление
 		switch (_getch()) {
 		case 'W':
 		case 'w':
@@ -28,6 +28,10 @@ void Manipulation::Coord()
 		case 'd':
 			x++;
 			break;
+		case 'Q':
+		case 'q':
+			// fire
+			break;
 		case 'R':
 		case 'r':
 			exit(1);
@@ -38,24 +42,29 @@ void Manipulation::Coord()
 	cout << x << " " << y;
 }
 
-short Manipulation::GetXCoord()
+short Manipulation::GetXCoord() const 
 {
 	return x;
 }
 
-short Manipulation::GetYCoord()
+short Manipulation::GetYCoord() const 
 {
 	return y;
 }
 
-short Manipulation::GetPXCoord()
+short Manipulation::GetPXCoord() const 
 {
 	return px;
 }
 
-short Manipulation::GetPYCoord()
+short Manipulation::GetPYCoord() const 
 {
 	return py;
+}
+
+HANDLE Manipulation::GetHandle() const
+{
+	return HANDLE(h);
 }
 
 void Manipulation::Print()

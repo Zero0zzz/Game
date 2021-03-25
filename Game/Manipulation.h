@@ -9,16 +9,17 @@ using namespace std;
 class Manipulation
 {
 	short x, y;
-	short px, py;//предыдущия кордината
+	short px, py; // предыдущия кордината
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 	Draw m;
 public:
 	Manipulation();
 	void Coord();
-	short GetXCoord();
-	short GetYCoord();
-	short GetPXCoord();
-	short GetPYCoord();
+	short GetXCoord() const ;
+	short GetYCoord() const ;
+	short GetPXCoord() const ;
+	short GetPYCoord() const ;
+	HANDLE GetHandle() const ;
 	void Print();
 };
 

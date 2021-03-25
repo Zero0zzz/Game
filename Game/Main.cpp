@@ -51,10 +51,12 @@ int main()
 	//wcscpy(cfi.FaceName, L"Lucida Console");
 	wcscpy(cfi.FaceName, L"Lucida Console");
 	SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi);
+
 	Draw dr;
 	Manipulation w;
-	dr.ReadFile();
-	dr.Show();
+
+	dr.ReadFile(); // считывание с файла 
+	dr.Show(); // отрисовка 
 	while (1)
 	{
 		w.Print();

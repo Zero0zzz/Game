@@ -65,6 +65,11 @@ void Draw::Show()
 	{
 		for (int j = 0; j < y; j++)
 		{
+			if (map[i][j] == '2') {
+				SetConsoleTextAttribute(h, 4);
+				cout << ".";
+				SetConsoleTextAttribute(h, 6);
+			}
 			if (map[i][j] == '1')
 			{
 				SetConsoleTextAttribute(h, 8);
@@ -84,5 +89,5 @@ bool Draw::Check(short xx, short yy)
 {
 	if (map[yy][xx] == '1')
 		return false;
-	return true;
-}
+	return true; 
+} 
