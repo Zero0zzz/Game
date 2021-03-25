@@ -4,18 +4,21 @@
 #include <windows.h>
 #include <fstream>
 #include <conio.h>
-#include <vector>
+#include "Draw.h"
 using namespace std;
-class Draw
+class Manipulation
 {
-protected:
-	char** map;
 	short x, y;
+	short px, py;//предыдущия кордината
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	Draw m;
 public:
-	Draw() = default;
-	void ReadFile();
-	void Show();
-	bool Check(short, short);
+	Manipulation();
+	void Coord();
+	short GetXCoord();
+	short GetYCoord();
+	short GetPXCoord();
+	short GetPYCoord();
+	void Print();
 };
 

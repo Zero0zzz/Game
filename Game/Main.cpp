@@ -1,7 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include<iostream>
+#include <iostream>
 #include <windows.h>
-#include"Draw.h"
+#include "Draw.h"
+#include "Manipulation.h"
 
 typedef BOOL(WINAPI* SETCONSOLEFONT)(HANDLE, DWORD);
 SETCONSOLEFONT SetConsoleFont;
@@ -9,7 +10,9 @@ SETCONSOLEFONT SetConsoleFont;
 using namespace std;
 int main()
 {
-	/////////
+
+	system("MODE CON COLS=100 LINES=122");
+
 	CONSOLE_FONT_INFO CFI;
 	CONSOLE_FONT_INFO* pCFI = &CFI;
 
@@ -41,20 +44,21 @@ int main()
 	CONSOLE_FONT_INFOEX cfi;
 	cfi.cbSize = sizeof cfi;
 	cfi.nFont = 0;
-	cfi.dwFontSize.X = 0;
-	cfi.dwFontSize.Y = 20;
+	cfi.dwFontSize.X = 15;
+	cfi.dwFontSize.Y = 25;
 	cfi.FontFamily = FF_DONTCARE;
 	cfi.FontWeight = FW_NORMAL;
 	//wcscpy(cfi.FaceName, L"Lucida Console");
 	wcscpy(cfi.FaceName, L"Lucida Console");
 	SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi);
-
 	Draw dr;
-	dr.Create_file();
-
-	system("pause >> null");
-
-	//////
+	Manipulation w;
+	dr.ReadFile();
+	dr.Show();
+	while (1)
+	{
+		w.Print();
+	}
 }
 
 /*
